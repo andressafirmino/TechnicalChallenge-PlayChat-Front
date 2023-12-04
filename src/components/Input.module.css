@@ -1,0 +1,14 @@
+.root {
+    @apply 
+    rounded-md 
+    text-lg 
+    text-gray-500
+    outline-none 
+    p-2 
+    border 
+    border-custom-gray 
+    box-border 
+    m-1 
+    shadow-md 
+    focus:border-2
+}

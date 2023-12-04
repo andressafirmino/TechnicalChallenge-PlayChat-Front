@@ -8,10 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      width: {
+        '700px': '700px',
+      },
+      fontFamily: {
+        'lobster': ['Lobster', 'cursive'],
+      },
+      outline: {
+        none: 'none',
+      },
+      borderColor: {
+        'custom-gray': 'rgb(96, 92, 91)',
+      },
+      colors: {
+        customGray: 'rgb(88, 98, 96)',
+      },
+      boxShadow: {
+        customShadow: '0px 4px 24px 0px rgba(96, 92, 91, 0.12)',
       },
     },
   },
