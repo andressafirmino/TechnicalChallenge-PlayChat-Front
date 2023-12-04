@@ -28,10 +28,8 @@ export default function SignIn() {
     }
 
     return (
-        <div className="h-screen flex items-center justify-center flex-col">
-            <p className="w-screen text-4xl text-white text-center font-bold bg-gray-800 p-3 shadow-md">Play Chat</p>
+        <>
             <form className="flex flex-col w-700px mx-auto my-auto" onSubmit={signUp}>
-
 
                 <input className={styles.root} placeholder="E-mail" type="email"
                     required value={email} onChange={(e) => setEmail(e.target.value)} disabled={disabled} />
@@ -48,6 +46,6 @@ export default function SignIn() {
                 </button>
             </form>
             <Link className="my-3" href="/sign-up">Don't have an account? Sign Up!</Link>
-        </div>
+        </>
     )
 }
