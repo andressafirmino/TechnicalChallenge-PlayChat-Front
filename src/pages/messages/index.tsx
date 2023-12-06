@@ -1,28 +1,35 @@
 import { AuthContext } from "@/context/auth";
 import SendBox from "../../components/SendBox";
 import axios from "axios";
-import { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
-export async function getServerSideProps() {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_DB_HOST}/messages`);
-
-    return {
-        props: {
-            messages: response.data
-        }
-    }
-}
-export default function Messages({ messages }: any) {
+export default function Messages() {
     const { userId } = useContext(AuthContext);
+    const [messages, setMessages] = useState([])
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            axios.get(`${process.env.NEXT_PUBLIC_DB_HOST}/messages`)
+                .then(response => {
+                    setMessages(response.data);
+                })
+                .catch(e => {
+                    alert(e.response.data.message);
+                })
+
+            return () => clearInterval(intervalId);
+        }, 1000);
+    }, [])
+
     return (
         <div className="h-screen w-screen overflow-y-auto mt-20 mb-20 px-4 ">
             {messages.map((message: any) => (
@@ -37,6 +44,7 @@ export default function Messages({ messages }: any) {
                     <p className="text-gray-800 text-base">{message.text}</p>
                 </div>
             ))}
+            <div ref={messagesEndRef} />
             <SendBox />
         </div>
     )

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import PaperPlaneOutline from '../assets/paper-plane-outline.svg';
 import { AuthContext } from "@/context/auth";
@@ -6,6 +6,8 @@ import { AuthContext } from "@/context/auth";
 export default function SendBox() {
     const { token, userId } = useContext(AuthContext);
     const [message, setMessage] = useState("");
+
+    const socketIoRef = useRef();
 
     function sendMessage(e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
