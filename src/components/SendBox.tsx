@@ -1,19 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import PaperPlaneOutline from '../assets/paper-plane-outline.svg';
+import { AuthContext } from "@/context/auth";
 
 export default function SendBox() {
+    const { token, userId } = useContext(AuthContext);
     const [message, setMessage] = useState("");
 
     function sendMessage(e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
 
         const body = {
-            senderId: 6,
+            senderId: parseInt(userId),
             isPrivate: false,
             text: message
         }
-        axios.post(`${process.env.NEXT_PUBLIC_DB_HOST}/messages`, body)
+        console.log(token)
+        axios.post(`${process.env.NEXT_PUBLIC_DB_HOST}/messages`, body, {
+            headers: { authorization: `Bearer ${token}` }
+        })
             .then(() => setMessage(""))
             .catch(e => console.log(e.response.data))
     }
