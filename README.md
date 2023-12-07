@@ -6,7 +6,7 @@ Front-end application for the technical challenge of Full Stack Jr. In this appl
 [https://github.com/andressafirmino/TechnicalChallenge-PlayChat-Front]()
 
 # Deploy
-[https://technical-challenge-play-chat-front.vercel.app/]()
+<a href="https://technical-challenge-play-chat-front.vercel.app/">Play Chat</>
 
 # How does it work?
 This project is a chat for exchanging messages. It has two entities: `users` and `messages`.
