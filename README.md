@@ -1,40 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Play Chat
+Front-end application for the technical challenge of Full Stack Jr. In this application it is possible to manage the front-end of a small chat through HTTP(s) requests following the REST convention.
 
-## Getting Started
 
-First, run the development server:
+# Demo
+[https://github.com/andressafirmino/TechnicalChallenge-PlayChat-Front]()
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Deploy
+[https://technical-challenge-play-chat-front.vercel.app/]()
+
+# How does it work?
+This project is a chat for exchanging messages. It has two entities: `users` and `messages`.
+
+For the `users` entity, two routes were created:
+
+- POST `/sign-up`: Register a user.
+- POST `/sign-in`: Login user. If the user is not registered, a 401 error is returned.
+
+For the `messages` entity, two routes were created:
+
+- POST `/messages`: Send a message.
+- GET `/messages`: Get all messages.
+
+
+# Motivation
+This was my first practical project using NextJS and TailwindCSS. This opportunity allowed me to implement new ways of styling layouts, as well as learn more about Server Side Rendering.
+
+# Technologies used
+For this project, the following were used:
+
+- Node;
+- NextJS;
+- TypeScript;
+- TailwindCSS;
+- Axios.
+
+# How to run in development
+To run this project under development, you need to follow the steps below:
+
+- Clone the repository;
+- Download the necessary dependencies with the command: `npm install`;
+- Then create the `.env` file based on `.env.example`;
+- This `.env` file is composed of the following properties:
 ```
+- NEXT_PUBLIC_DB_HOST="http://local..."
+```
+- The `NEXT_PUBLIC_DB_HOST` property is used to connect to the server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- To run the project under development, run the command `npm run dev`;
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Continuity plan
+- Implement websocket for realtime;
+- Implement layout and features for user logout
+- Implement layout and features for sending private messages
+- Implement layout and features for adding users to the friends list;
+- Implement layout and features for room creation;
+- Implement layout and features for message response;
+- Implement layout and features for message editing;
+- Implement layout and features to search for other users.
